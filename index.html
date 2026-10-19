@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f8edda">
+    <title>Tiny Genius | Blu's Nerd Nursery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="#home">tiny genius <span>★</span></a>
+
+        <nav aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#hobbies">Hobbies</a>
+            <a href="#about">About Blu</a>
+        </nav>
+
+        <button id="sound-toggle" class="icon-button" type="button"
+                aria-label="Toggle sound">♫</button>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+                <div class="intro-card paper">
+                    <p class="eyebrow">WELCOME TO MY ROOM</p>
+                    <h1>Meet <span>Blu!</span></h1>
+                    <p class="intro">
+                        Tiny nerd. Huge brain. Absolutely criminal opinions.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag pink">Piano player</span>
+                        <span class="tag yellow">Bookworm</span>
+                        <span class="tag blue">Future scientist</span>
+                    </div>
+
+                    <a class="primary-button link-button" href="#hobbies">
+                        Enter Blu's world ↓
+                    </a>
+                </div>
+
+                <!-- Use your transparent character artwork here. -->
+                <div class="character-stage">
+                    <img
+                        src="nero.png"
+                        class="character"
+                        alt="Nero, the blue-haired baby with circular glasses"
+                        onerror="this.hidden = true;
+                                 document.getElementById('character-fallback').hidden = false;"
+                    >
+                </div>
+
+                <div class="speech-bubble paper" id="speech-bubble">
+                    “Welcome. Your intelligence appears... average”
+                </div>
+            </div>
+
+            <a class="scroll-cue" href="#hobbies">
+                <span>SCROLL TO EXPLORE</span>
+                <span class="arrow">↓</span>
+            </a>
+        </section>
+
+        <section class="hobbies section" id="hobbies">
+            <div class="section-heading">
+                <p class="eyebrow">CHOOSE YOUR SIDE QUEST</p>
+                <h2>What are we doing today?</h2>
+                <p>Pick an activity. Prepare to be judged.</p>
+            </div>
+
+            <div class="activity-grid">
+                <button class="activity-card pink-card" data-open="piano" type="button">
+                    <span class="activity-icon">♫</span>
+                    <strong>The Piano Room</strong>
+                    <span>Play seven keys. Interrupt a concert.</span>
+                    <span class="card-link">PLAY NOW →</span>
+                </button>
+
+                <button class="activity-card yellow-card" data-open="library" type="button">
+                    <span class="activity-icon">▤</span>
+                    <strong>The Cozy Library</strong>
+                    <span>Read a story under a warm night light.</span>
+                    <span class="card-link">OPEN LIBRARY →</span>
+                </button>
+
+                <button class="activity-card blue-card" data-open="study" type="button">
+                    <span class="activity-icon">⚗</span>
+                    <strong>Young Sheldon Mode</strong>
+                    <span>Get a study plan from a tiny know-it-all.</span>
+                    <span class="card-link">GET SMART →</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="workspace section" id="workspace" aria-live="polite">
+            <div class="section-heading">
+                <p class="eyebrow">BLU'S LABORATORY</p>
+                <h2 id="workspace-title">Your next adventure awaits</h2>
+                <p id="workspace-subtitle">Choose an activity above to begin.</p>
+            </div>
+
+            <!-- PIANO -->
+            <section class="tool-panel paper hidden" id="piano-panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">MUSIC ROOM</p>
+                        <h3>The Piano of Doom</h3>
+                    </div>
+                    <button class="close-panel" type="button" data-close>✕</button>
+                </div>
+
+                <p>Click a key or use A, S, D, F, G, H, J on your keyboard.</p>
+
+                <div class="piano">
+                    <button class="key" data-note="0" type="button"><span>C</span><small>A</small></button>
+                    <button class="key" data-note="1" type="button"><span>D</span><small>S</small></button>
+                    <button class="key" data-note="2" type="button"><span>E</span><small>D</small></button>
+                    <button class="key" data-note="3" type="button"><span>F</span><small>F</small></button>
+                    <button class="key" data-note="4" type="button"><span>G</span><small>G</small></button>
+                    <button class="key" data-note="5" type="button"><span>A</span><small>H</small></button>
+                    <button class="key" data-note="6" type="button"><span>B</span><small>J</small></button>
+                </div>
+
+                <div class="button-row">
+                    <button class="primary-button" id="demo-song" type="button">Play Blu's song</button>
+                    <button class="secondary-button" id="interrupt" type="button">Ragebait him</button>
+                    <button class="secondary-button" id="clear-song" type="button">Reset count</button>
+                </div>
+
+                <p id="piano-status" class="microcopy">Notes played: 0</p>
+            </section>
+
+            <!-- LIBRARY -->
+            <section class="tool-panel paper hidden" id="library-panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">SHHH... GENIUS AT WORK</p>
+                        <h3>The Cozy Library</h3>
+                    </div>
+                    <button class="close-panel" type="button" data-close>✕</button>
+                </div>
+
+                <div class="lamp-box" id="lamp-box">
+                    <p id="lamp-message">
+                        Blu: “Turn on the night light first. My eyeballs are academically delicate.”
+                    </p>
+                    <button class="primary-button" id="lamp-toggle" type="button">
+                        ☼ Turn on night light
+                    </button>
+                </div>
+
+                <div class="library-layout">
+                    <div class="book-list">
+                        <button class="book-choice selected" data-book="0" type="button">01 · The Moon's Homework</button>
+                        <button class="book-choice" data-book="1" type="button">02 · Tiny Science</button>
+                        <button class="book-choice" data-book="2" type="button">03 · Dragon Algebra</button>
+                        <button class="book-choice" data-book="3" type="button">04 · The Piano Planet</button>
+                        <button class="book-choice" data-book="4" type="button">05 · Space for Babies</button>
+                        <button class="book-choice" data-book="5" type="button">06 · How to Touch Grass</button>
+                    </div>
+
+                    <article class="book-page" id="book-page">
+                        <p class="eyebrow">CHAPTER ONE</p>
+                        <h3>The Moon's Homework</h3>
+                        <p>The moon had forgotten to finish its homework.</p>
+                        <p>“I was busy orbiting,” it explained. “Honestly, school should understand celestial responsibilities.”</p>
+                    </article>
+                </div>
+
+                <div class="drop-zone" id="drop-zone">
+                    <strong>Bring your own book (PDF)</strong>
+                    <span>Drag a PDF here or choose one from your computer.</span>
+                    <label class="secondary-button file-label">
+                        Choose PDF
+                        <input id="pdf-file" type="file" accept="application/pdf,.pdf">
+                    </label>
+                    <p class="microcopy" id="pdf-status">Your file stays in your browser.</p>
+                </div>
+
+                <div class="pdf-viewer hidden" id="pdf-viewer">
+                    <div class="pdf-toolbar">
+                        <span id="pdf-name">Your PDF</span>
+                        <button id="pdf-prev" class="secondary-button" type="button">← Previous</button>
+                        <span id="pdf-page-count">Page 1</span>
+                        <button id="pdf-next" class="secondary-button" type="button">Next →</button>
+                    </div>
+                    <iframe id="pdf-frame" title="PDF book reader"></iframe>
+                </div>
+            </section>
+
+            <!-- STUDY PLANNER -->
+            <section class="tool-panel paper hidden" id="study-panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">BIG BRAIN HOURS</p>
+                        <h3>Young Sheldon Mode</h3>
+                    </div>
+                    <button class="close-panel" type="button" data-close>✕</button>
+                </div>
+
+                <p>Give Blu a few details. He'll make a study plan and judge your time management.</p>
+
+                <form id="study-form" class="study-form">
+                    <label>
+                        What are you studying?
+                        <input id="subject" required placeholder="e.g. Biology, calculus, history">
+                    </label>
+
+                    <div class="form-grid">
+                        <label>
+                            Exam date
+                            <input id="exam-date" type="date" required>
+                        </label>
+                        <label>
+                            Hours available per day
+                            <input id="hours" type="number" min="1" max="12" value="2" required>
+                        </label>
+                    </div>
+
+                    <label>
+                        Difficulty
+                        <select id="difficulty">
+                            <option value="1">Lowkey chill</option>
+                            <option value="2" selected>Moderately cooked</option>
+                            <option value="3">Absolutely cooked</option>
+                        </select>
+                    </label>
+
+                    <button class="primary-button" type="submit">Generate my study plan</button>
+                </form>
+
+                <div id="study-result" class="study-result hidden"></div>
+            </section>
+        </section>
+
+        <section class="about section paper" id="about">
+            <div>
+                <p class="eyebrow">A VERY SERIOUS BIOGRAPHY</p>
+                <h2>Small baby. Big brain. Zero chill.</h2>
+                <p>
+                    Blu loves piano, books, and making extremely confident
+                    arguments about things he learned five minutes ago.
+                    Explore the room, discover the activities, and see if you
+                    can find the secret.
+                </p>
+            </div>
+
+            <div class="stats">
+                <div><strong>7</strong><span>piano keys</span></div>
+                <div><strong>6</strong><span>tiny books</span></div>
+                <div><strong>∞</strong><span>hot takes</span></div>
+            </div>
+
+            <button id="secret-button" class="secret-button" type="button" aria-label="Secret star">★</button>
+        </section>
+
+        <!-- ========================================
+   ARCADE PANEL (FILLING THE VOID)
+======================================== -->
+<section class="section workspace">
+    <div class="paper tool-panel" id="arcade-panel">
+        <div class="panel-heading">
+            <div>
+                <span class="eyebrow">🔴 LIVE ARCADE CABINET</span>
+                <h3>Blu's Retro Avoid-the-Failing-Grade Game</h3>
+                <p class="microcopy">Steer Blu's brain left and right. Collect A+ grades, dodge F grades!</p>
+            </div>
+        </div>
+
+        <!-- The Game Viewport -->
+        <div class="arcade-cabinet">
+            <div class="arcade-screen">
+                <canvas id="gameCanvas" width="400" height="300"></canvas>
+                <div id="game-over-screen" class="hidden">
+                    <h4>GAME OVER</h4>
+                    <p id="final-score">Score: 0</p>
+                    <button class="primary-button" id="start-game-btn">Play Again</button>
+                </div>
+            </div>
+            
+            <!-- Physical Arcade Buttons -->
+            <div class="arcade-controls">
+                <button class="secondary-button ctrl-btn" id="move-left">◀ Left [A]</button>
+                <button class="secondary-button ctrl-btn" id="move-right">Right [D] ▶</button>
+            </div>
+            <div class="arcade-score-row">
+                <span id="game-score">Score: 0</span>
+                <span id="game-high-score">High Score: 0</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <footer>
+            Made with paper scraps, questionable opinions, and a tiny genius. ★
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
